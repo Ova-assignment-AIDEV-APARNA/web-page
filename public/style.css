@@ -1,0 +1,14 @@
+body {
+  font-family: 'Segoe UI',  Verdana, sans-serif;
+  background-color: rgba(255, 235, 205, 0.578);
+}
+
+.custom-card {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.custom-card:hover {
+  transform: translateY(-5px);
+}
