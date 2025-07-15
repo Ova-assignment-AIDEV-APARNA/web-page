@@ -1,35 +1,23 @@
-// Show alert when form is submitted
-document.addEventListener('DOMContentLoaded', function () {
-  const form = document.querySelector('form');
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.querySelector("form");
 
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault(); // prevent actual form submission
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-      const name = document.getElementById('name').value;
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const msg = document.getElementById("msg").value.trim();
+
+    // Simple email regex
+    const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+
+    if (!name || !email || !msg) {
+      alert("Please fill out all fields.");
+    } else if (!emailRegex.test(email)) {
+      alert("Please enter a valid email address.");
+    } else {
       alert(`Thank you, ${name}! Your message has been sent.`);
-
-      form.reset(); // clear form fields
-    });
-  }
-
-  // Card hover alert (optional)
-  const cards = document.querySelectorAll('.custom-card');
-  cards.forEach(card => {
-    card.addEventListener('click', () => {
-      alert('You clicked on a card!');
-    });
+      form.reset();
+    }
   });
-
-  // Optional: Back to top button logic
-  const backToTopBtn = document.getElementById('backToTop');
-  if (backToTopBtn) {
-    window.addEventListener('scroll', () => {
-      backToTopBtn.style.display = window.scrollY > 200 ? 'block' : 'none';
-    });
-
-    backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
 });
